@@ -1,10 +1,15 @@
 #!/bin/bash
 
+if [[ ! -d ~/.m2 ]]; then
+  mkdir -p ~/.m2
+fi
+
+if [[ ! -w ~/.m2 ]]; then
+  sudo chown -R dev:dev ~/.m2
+fi
+
 # set proxy
 if [ -v PROXY_HOST ]; then
-  # maven 
-  mkdir -p ~/.m2
-
 cat > ~/.m2/settings.xml <<-EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
