@@ -4,7 +4,7 @@ eclim container to develop java code.
 + maven
 + eclim
 
-## usage ## 
+## usage ##
 To run,
 ```
 docker run -d -e --name tmp gk0909c/eclim
