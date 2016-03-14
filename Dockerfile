@@ -69,7 +69,16 @@ COPY .vimrc ${WORK_HOME}/.vimrc
 COPY .vimrc_tab ${WORK_HOME}/.vimrc_tab
 RUN chown dev:dev ${WORK_HOME}/.vimrc ${WORK_HOME}/.vimrc_tab
 COPY entrypoint.sh ${WORK_HOME}/entrypoint.sh
-RUN chmod 755 entrypoint.sh
+RUN chmod 755 ${WORK_HOME}/entrypoint.sh
+
+# INSTALL OHTER PACKAGE
+RUN apt-get install -y nginx 
+
+# NGINX SETTING
+COPY util.sh ${WORK_HOME}/util.sh
+RUN chmod 755 ${WORK_HOME}/util.sh && \
+    echo "source ${WORK_HOME}/util.sh" >> ${WORK_HOME}/.bashrc && \
+    rm /etc/nginx/sites-enabled/default
 
 # SWITCH USER
 USER dev
