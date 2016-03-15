@@ -85,6 +85,7 @@ USER dev
 
 # SETTING VIM
 RUN echo "export TERM=xterm-256color" >> ${WORK_HOME}/.bashrc && \
+    echo "export LESSCHARSET=utf-8" >> ${WORK_HOME}/.bashrc
     echo "alias view='vim -R'" >> ${WORK_HOME}/.bashrc && \
     echo "alias vi='vim'" >> ${WORK_HOME}/.bashrc
 RUN mkdir -p ${WORK_HOME}/.vim/bundle && \
